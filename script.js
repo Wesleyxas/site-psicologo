@@ -28,7 +28,9 @@ const inputFoto = document.getElementById("edit-foto");
 const previewFoto = document.getElementById("preview-foto");
 
 botaoEditar.addEventListener("click", function () {
-  formularioEditar.classList.add("active");
+  formularioEditar.classList.add("active", "overlay");
+  botaoEditar.style.display = "none"; // ESCONDE o botão editar
+
   document.getElementById("edit-nome").value =
     document.getElementById("nome").textContent;
   document.getElementById("edit-crp").value =
@@ -54,12 +56,14 @@ inputFoto.addEventListener("change", function (evento) {
 });
 
 botaoCancel.addEventListener("click", function () {
-  formularioEditar.classList.remove("active");
+  formularioEditar.classList.remove("active", "overlay");
   previewFoto.classList.remove("active");
+  botaoEditar.style.display = "inline-block";
 });
 
 formularioEditar.addEventListener("submit", function (evento) {
   evento.preventDefault();
+
   document.getElementById("nome").textContent =
     document.getElementById("edit-nome").value;
   document.getElementById("crp").textContent =
@@ -69,6 +73,7 @@ formularioEditar.addEventListener("submit", function (evento) {
   document.getElementById("frase").textContent =
     document.getElementById("edit-frase").value;
   document.getElementById("foto").src = previewFoto.src;
+
   localStorage.setItem(
     "perfil",
     JSON.stringify({
@@ -79,8 +84,10 @@ formularioEditar.addEventListener("submit", function (evento) {
       foto: document.getElementById("foto").src,
     })
   );
+
   formularioEditar.classList.remove("active");
   previewFoto.classList.remove("active");
+  botaoEditar.style.display = "inline-block"; // MOSTRA botão editar
   alert("Perfil atualizado com sucesso!");
 });
 
