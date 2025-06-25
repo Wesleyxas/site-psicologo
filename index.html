@@ -51,25 +51,33 @@
       <form id="form-editar-perfil" class="form-hidden">
         <label for="edit-nome">Nome:</label>
         <input type="text" id="edit-nome" required />
+
         <label for="edit-crp">CRP:</label>
         <input type="text" id="edit-crp" required />
+
         <label for="edit-bio">Bio:</label>
         <textarea id="edit-bio" required></textarea>
+
         <label for="edit-frase">Frase:</label>
         <input type="text" id="edit-frase" required />
+
         <label for="edit-foto">Foto de Perfil:</label>
         <div class="upload-container">
           <input type="file" id="edit-foto" accept="image/*" required />
           <label for="edit-foto" class="upload-label">Escolher Foto</label>
         </div>
+
         <img
           id="preview-foto"
           src=""
           alt="Pré-visualização da foto"
           class="form-hidden"
         />
-        <button type="submit">Salvar</button>
-        <button type="button" id="cancelar-editar">Cancelar</button>
+
+        <div style="display: flex; justify-content: space-between; width: 100%">
+          <button type="submit">Salvar</button>
+          <button type="button" id="cancelar-editar">Cancelar</button>
+        </div>
       </form>
       <div class="container-sobre">
         <img id="foto" src="foto.jpg" alt="Foto do Dr. Fulano de Tal" />
