@@ -142,3 +142,18 @@ window.onload = function () {
   document.documentElement.dataset.theme = temaSalvo;
   botaoTema.textContent = temaSalvo === "dark" ? "🌙" : "🌓";
 };
+
+// Animações ao rolar
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transition = "opacity 0.5s ease";
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+sections.forEach((section) => observer.observe(section));
